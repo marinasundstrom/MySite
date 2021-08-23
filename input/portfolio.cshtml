@@ -1,0 +1,105 @@
+@using System.Linq
+@using System.IO
+@using System.Text.Json
+
+@{
+    var json = await File.ReadAllTextAsync("input/portfolio.json");
+    var portfolio = Portfolio2.FromJson(json);
+}
+
+<style>
+    .grid-dl dt {
+        padding: 0.5em 0 0.5em 0;
+        font-weight: 600;
+    }
+
+    .grid-dl dd {
+        margin: 0;
+        padding: 0.5em 0 0.5em 0;
+    }
+
+    @@media (min-width: 550px) {
+        .grid-dl {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto;
+        }
+        .grid-dl dt {
+            grid-column-start: 1;
+        }
+        .grid-dl dd {
+            grid-column-start: 2;
+        }
+        .grid-dl dt+dd {
+        }
+    }
+</style>
+
+<div class="container mt-5">
+
+    @foreach(var project in portfolio.Projects) 
+    {
+        <div class="row mb-4">
+            <div class="col-sm-12 col-md-4 text-center">
+                <a href="@project.Image" target="_blank">
+                    <img class="mb-5" style="max-height: 200px; max-width: 200px;" src="@project.Image" />
+                </a>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <h2>@project.Name</h2>
+                <hr />
+
+                @Html.Raw(project.Description.Replace("\n", "<br />"))
+
+                <div class="mt-5">
+                    @foreach(var link in project.Links) 
+                    {
+                        <a class="btn btn-sm btn-secondary" href="@link.Url"><i class="fab fa-github fa-lg mr-1"></i> @link.Name</a>
+                    }
+                </div>
+
+                @if(project.Skills != null) 
+                {
+                    var skills = project.Skills;
+
+                    <dl class="grid-dl mt-4">
+
+                        @if(skills.Platforms != null) 
+                        {
+                            <dt>Platforms:</dt>
+                            <dd>@string.Join(", ", skills.Platforms)</dd>
+                        }
+
+                        @if(skills.ProgrammingLanguages != null) 
+                        {
+                            <dt>Programming languages:</dt>
+                            <dd>@string.Join(", ", skills.ProgrammingLanguages)</dd>
+                        }
+
+                        @if(skills.Frameworks != null) 
+                        {
+                            <dt>Frameworks:</dt>
+                            <dd>@string.Join(", ", skills.Frameworks)</dd>
+                        }
+
+                        @if(skills.Applications != null) 
+                        {
+                            <dt>Applications:</dt>
+                            <dd>@string.Join(", ", skills.Applications)</dd>
+                        }
+
+                        @if(skills.Technologies != null) 
+                        {
+                            <dt>Technologies:</dt>
+                            <dd>@string.Join(", ", skills.Technologies)</dd>
+                        }
+                    </dl>
+
+                }
+            </div>
+        </div>
+
+        <div style="height: 30px;"></div>
+    }
+
+</div>

@@ -1,0 +1,215 @@
+Title: CV
+--
+@using System.Linq
+@using System.IO
+@using System.Text.Json
+
+@{
+    var json = await File.ReadAllTextAsync("input/resume.json");
+    var resume = Resume.FromJson(json);
+ 
+    json = await File.ReadAllTextAsync("input/skills.json");
+    var skillAreas =  JsonSerializer.Deserialize<Dictionary<string, string[]>>(json)!;
+}
+
+<style>
+    .grid-dl dt {
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 0.5em 0 0.5em 0;
+        font-weight: 600;
+    }
+
+    .grid-dl dd {
+        margin: 0;
+        padding: 0.5em 0 0.5em 0;
+    }
+
+    @@media (min-width: 550px) {
+        .grid-dl {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto;
+        }
+        .grid-dl dt {
+            grid-column-start: 1;
+        }
+        .grid-dl dd {
+            grid-column-start: 2;
+        }
+        .grid-dl dt+dd {
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+    }
+
+    .mystyle {
+        font-weight: bold;
+    }
+</style>
+
+<div class="row">
+    <div class="col-md-4">
+        <section class="sidenav" style="position: -webkit-sticky; position: sticky; top: 80px;">
+            <h4 class="mb-4">Sections</h4> 
+
+            <ul style="margin: 0; padding: 0; list-style: none" class="mb-4">
+                <li>
+                    <a href="#objective">Objective</a>
+                </li>
+                <li>
+                    <a href="#experience">Experience</a>
+                </li>
+                <li>
+                    <a href="#education">Education</a>
+                </li>
+                <li>
+                    <a href="#skills">Skills</a>
+                </li>
+            </ul>
+        </section>
+    </div>
+    
+    <div class="sections col-md-8">
+
+        <section class="mb-4">
+
+            <h1 id="objective" class="text-uppercase">Objective</h1>
+
+            <hr />
+
+            <div class="row">
+
+                <div class="col-md-10 mt-4 mb-5 pr-4">
+
+                    <p>I am a Software Developer with interest in Software design and the Development process.</p>
+
+                    <p>To me, developing software is not just about programming, but understanding both the domain and the people we
+                        are developing for, and their experience.</p>
+
+                    <p>I have 7 years of professional experience in Software development - Desktop and Web (Frontend & Backend). I
+                        am good at C#/.NET. I have been building apps with WPF and ASP.NET Core & Blazor.</p>
+
+                    <p>Other languages that I know well are JavaScript/Typescript. I have been writing React apps professionally. I
+                        also have basic database skills.</p>
+
+                    <p>I am structured and Solution-oriented. I thrive in a creative environment, in which you can be yourself,
+                        where you can freely express your individuality. That is where we can grow together.</p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section>
+
+            <h1 id="experience" class="text-uppercase">Experience</h1>
+
+            <hr />
+
+            <div class="mt-4" style="max-width: 640px">
+
+                @foreach (var (company, experiences) in resume.Experience
+                .OrderByDescending(x => x.StartDate)
+                .ThenByDescending(x => x.EndDate)
+                .GroupBy(e => e.Company))
+                {
+                    if (experiences.Count() == 1)
+                    {
+                        var experience = experiences.First();
+
+                        <div class="mb-5">
+                            <h2>@experience.Title</h2>
+
+                            <hr />
+
+                            @Html.Partial("/_experience.cshtml",(experience: experience, isSub: false))
+                        </div>
+                    }
+                    else
+                    {
+                        var lastExperience = experiences.First();
+                        var firstExperience = experiences.Last();
+
+                        <div class="mb-5">
+                            <h2>@firstExperience.Company</h2>
+
+                            <hr />
+
+                            <p class="text-muted meta mb-5">@firstExperience.GetStartDate().Humanize2(lastExperience.GetEndDate())</p>
+
+                            @foreach (var experience in experiences
+                        .OrderByDescending(x => x.StartDate)
+                        .ThenByDescending(x => x.EndDate))
+                            {
+                                <div class="mb-5">
+                                    <h3>@experience.Title</h3>
+
+                                    @Html.Partial("/_experience.cshtml", (experience: experience, isSub: true))
+                                </div>
+                            }
+                        </div>
+                    }
+                }
+            </div>
+
+        </section>
+
+        <section class="mb-4">
+
+            <h1 id="education" class="text-uppercase">Education</h1>
+
+            <hr />
+
+            @foreach(var education in resume.Education) 
+            {
+                @Html.Partial("/_education.cshtml", education)     
+            }
+
+        </section>
+
+        <section class="mb-4">
+
+            <h1 id="skills" class="text-uppercase">Skills</h1>
+
+            <dl class="grid-dl">
+
+                @foreach(var (skillArea, skills) in skillAreas) 
+                {
+                    <dt>@skillArea</dt>
+                    <dd>
+                        @string.Join(", ", skills)
+                    </dd>
+                }
+
+            </dl>
+
+        </section>
+
+    </div>
+</div>
+
+<script>
+
+    const sections = document.querySelectorAll(".sections section");
+    const navLi = document.querySelectorAll(".sidenav ul li a");
+
+    window.addEventListener('scroll', () => {
+        let current = "";
+        Array.from(sections).reverse().forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+
+            var sectionA = Array.from(navLi).find(x => x.href && x.href.endsWith(`#${section.firstElementChild.id}`));
+
+            if(pageYOffset > section.offsetTop && pageYOffset < section.offsetTop + section.clientHeight)
+            {
+                sectionA.classList.add("mystyle");
+            }
+            else 
+            {
+                sectionA.classList.remove("mystyle");
+            }
+        });
+    });
+
+</script>
