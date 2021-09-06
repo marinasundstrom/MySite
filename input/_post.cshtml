@@ -1,7 +1,14 @@
+@using ReadTimeEstimator.Implementations.Estimators;
+@using Humanizer
 @model IDocument
 
 @{
     string excerpt = Model.GetString(Statiq.Html.HtmlKeys.Excerpt);
+
+    var htmlEstimator = new HtmlEstimator();
+    string content = await Model.GetContentStringAsync();
+    var estimatedTime = TimeSpan.FromMinutes(
+        htmlEstimator.ReadTimeInMinutes(content));
 }
 
 <div class="post-preview mb-5">
@@ -10,7 +17,7 @@
     {
         <div class="post-subtitle">@Model.GetString("Lead")</div>
     }
-    <p class="post-meta">Published on @Model.GetDateTime(WebKeys.Published).ToLongDateString()</p>                
+    <p class="post-meta">Published on @Model.GetDateTime(WebKeys.Published).ToLongDateString() • @if(estimatedTime.TotalMinutes < 1) { <text>Less than a minute</text> } else { @estimatedTime.Humanize(minUnit: Humanizer.Localisation.TimeUnit.Minute) } read</p>                
     @if (!string.IsNullOrEmpty(excerpt))
     {
         @Html.Raw(excerpt)

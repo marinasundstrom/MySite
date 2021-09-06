@@ -1,3 +1,5 @@
+@using ReadTimeEstimator.Implementations.Estimators;
+@using Humanizer
 @{
     string backgroundImage = null;
     if (Document.ContainsKey(WebKeys.Image))
@@ -7,6 +9,11 @@
     string description = Document.WithoutSettings().GetString("Lead") ?? Document.WithoutSettings().GetString(WebKeys.Description);
     string title = Document.GetString("Title") ?? Document.GetString("SiteTitle");
     bool isPost = Document.GetBool("IsPost") && title != "Tags" && title != "Archive";
+
+    var htmlEstimator = new HtmlEstimator();
+    string content = await Document.GetContentStringAsync();
+    var estimatedTime = TimeSpan.FromMinutes(
+        htmlEstimator.ReadTimeInMinutes(content));
 }
 <header class="masthead" style="@backgroundImage">
   <div class="overlay"></div>
@@ -28,7 +35,7 @@
           @if (isPost)
           {
               // This is a blog post so show extra data
-              <div class="meta">Published on @Document.GetDateTime(WebKeys.Published).ToLongDateString()</div>
+              <div class="meta">Published on @Document.GetDateTime(WebKeys.Published).ToLongDateString() • @if(estimatedTime.TotalMinutes < 1) { <text>Less than a minute</text> } else { @estimatedTime.Humanize(minUnit: Humanizer.Localisation.TimeUnit.Minute) } read</div>
               @if (Document.ContainsKey("Tags"))
               {
                 <div class="mt-3">

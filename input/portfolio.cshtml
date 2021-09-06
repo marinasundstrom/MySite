@@ -1,3 +1,6 @@
+Image: /assets/oresundsbron.jpeg
+---
+
 @using System.Linq
 @using System.IO
 @using System.Text.Json
@@ -33,6 +36,13 @@
         .grid-dl dt+dd {
         }
     }
+
+    h2 {
+        font-weight: 700;
+        margin-top: 0;
+        margin-bottom: 0;
+
+    }
 </style>
 
 <div class="container mt-5">
@@ -66,31 +76,31 @@
 
                         @if(skills.Platforms != null) 
                         {
-                            <dt>Platforms:</dt>
+                            <dt>Platforms</dt>
                             <dd>@string.Join(", ", skills.Platforms)</dd>
                         }
 
                         @if(skills.ProgrammingLanguages != null) 
                         {
-                            <dt>Programming languages:</dt>
+                            <dt>Programming languages</dt>
                             <dd>@string.Join(", ", skills.ProgrammingLanguages)</dd>
                         }
 
                         @if(skills.Frameworks != null) 
                         {
-                            <dt>Frameworks:</dt>
+                            <dt>Frameworks</dt>
                             <dd>@string.Join(", ", skills.Frameworks)</dd>
                         }
 
                         @if(skills.Applications != null) 
                         {
-                            <dt>Applications:</dt>
+                            <dt>Applications</dt>
                             <dd>@string.Join(", ", skills.Applications)</dd>
                         }
 
                         @if(skills.Technologies != null) 
                         {
-                            <dt>Technologies:</dt>
+                            <dt>Technologies</dt>
                             <dd>@string.Join(", ", skills.Technologies)</dd>
                         }
                     </dl>

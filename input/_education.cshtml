@@ -19,6 +19,14 @@
 
         @Html.Raw(education.Description?.Replace("\n", "<br />"))
 
+        @if(education.Activities?.Any() ?? false)
+        {
+            <dl class="mt-4">
+                <dt>Activities</dt>
+                <dd>@string.Join(", ", education.Activities)</dd>
+            </dl>
+        }
+
         @if(education.Courses?.Any() ?? false)
         {
             <dl class="mt-4">

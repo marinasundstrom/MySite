@@ -1,4 +1,5 @@
 Title: CV
+Image: /assets/oresundsbron.jpeg
 --
 @using System.Linq
 @using System.IO
@@ -41,13 +42,29 @@ Title: CV
         }
     }
 
+    .sidenav {
+        font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+
     .mystyle {
         font-weight: bold;
+    }
+
+    .mystyle:before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        margin-right: 5px;
+        margin-bottom: 5px;
+        display: inline-block;
+        background-color: #007bff;;
+        vertical-align: middle;
     }
 </style>
 
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-3 right-border">
         <section class="sidenav" style="position: -webkit-sticky; position: sticky; top: 80px;">
             <h4 class="mb-4">Sections</h4> 
 
@@ -68,7 +85,7 @@ Title: CV
         </section>
     </div>
     
-    <div class="sections col-md-8">
+    <div class="sections col-md-9">
 
         <section class="mb-4">
 

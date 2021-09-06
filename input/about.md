@@ -1,3 +1,7 @@
+Title: About me
+Image: /assets/oresundsbron.jpeg
+---
+
 I have been programming since 2007. My interest back then was to figure out how it all works. Since then I have been learning a lot about software engineering, both professionally and in my free time.
 
 My career began back in 2014, when I was working as a software developer for a local company that provided Internet and IT services. After that I went into consulting, where I got to experience software development at various companies and in many fields.

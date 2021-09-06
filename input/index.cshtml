@@ -7,11 +7,38 @@ ArchivePageSize: 4
 ArchiveOrderKey: Published
 ArchiveOrderDescending: true
 ArchiveTitle: => GetString("Title")
+Image: /assets/oresundsbron.jpeg
 ---
 <div>
-    <h1 class="text-center text-uppercase">Recent posts</h1>
+    <div class="mt-4 row text-center">
+      <div class="col-md-4 mb-5">
+        <a href="/about">
+          <i class="fas fa-user fa-4x"></i>
+          <h3 class="mt-4">Me</h3>
+        </a>
+        <p>I'm a <b>Software Developer</b>,<br />based in <a target="_blank" href="https://www.google.se/maps/place/Malmö/@@55.5702455,12.9457618,12z/data=!3m1!4b1!4m5!3m4!1s0x465305a574c491ff:0xd3a905dfbd4888e5!8m2!3d55.604981!4d13.003822?hl=en">Malmö, Sweden</a></p>
+      </div>
+
+      <div class="col-md-4 mb-5">
+        <a href="/cv">
+          <i class="fas fa-file-alt fa-4x"></i>
+          <h3 class="mt-4">CV</h3>
+        </a>
+        <a href="/cv#experience">Experience</a> • <a href="/cv#skills">Skills</a>
+      </div>
+
+      <div class="col-md-4 mb-5">
+        <a href="/portfolio">
+          <i class="fas fa-lightbulb fa-4x"></i>
+          <h3 class="mt-4">Portfolio</h3>
+        </a>
+        <p>Some of my projects</p>
+      </div>
+    </div>
 
     <hr />
+
+    <h1 class="text-center text-uppercase mt-5">Recent posts</h1>
 
     @Html.Partial("/_posts2.cshtml", Document)
 </div>

@@ -248,7 +248,7 @@
             "location": "Karlskrona, Sweden",
             "degree": null,
             "fieldOfStudy": "Software Engineering",
-            "startDate": "2009-08-01",
+            "startDate": "2009-09-01",
             "endDate": "2012-05-01",
             "activities": null,
             "description": null,
@@ -258,6 +258,24 @@
                 "Computer Networking",
                 "Compiler Construction",
                 "Software Design"
+            ]
+        },
+        {
+            "school": "John Bauergymnasiet",
+            "location": "Ystad, Sweden",
+            "degree": "null",
+            "fieldOfStudy": "IT",
+            "startDate": "2006-08-01",
+            "endDate": "2009-05-01",
+            "activities": [
+                "Europeran Rural Youth Forum",
+                "JB Abroad"
+            ],
+            "description": null,
+            "courses": [
+                "Computer Management",
+                "Computer Networking",
+                "Programming"
             ]
         }
     ]
