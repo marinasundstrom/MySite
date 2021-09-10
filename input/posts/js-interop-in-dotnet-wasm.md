@@ -1,7 +1,7 @@
 ---
 title: "JavaScript interop in .NET on WebAssembly"
 published: 2019-10-20
-tags: [dotnet, webassembly, wasm, js, interop, blazor]
+tags: [.NET, WebAssembly, WASM, JavaScript, Blazor]
 ---
 
 > This article was written back in 2019-06-15.

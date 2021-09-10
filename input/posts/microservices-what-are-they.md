@@ -1,5 +1,6 @@
 Title: Microservices - What are they?
 Published: 2021-09-01
+Tags: [Microservices, Distributed applications] 
 ---
 
 Microservices is a hot topic in software development nowadays. Everybody wants to do it, but what is the point of it? 
@@ -48,7 +49,7 @@ Applying the microservice mindset to an organization - to one or more developmen
 
 This often implies CI/CD. Automatic deployment. The Cloud. Using tools such as Docker and Kubernetes. But that is not a requirement.
 
-## Note on monoliths
+## Note on Monoliths
 
 Just to say: Monoliths are not inherently bad. The challenges are in maintainability. You can maintain boundaries between parts of your code within a so called "loosely-coupled monolith"- all in one process - using the same techniques and tools that you use when building microservices - Reaping some of the benefits.
 

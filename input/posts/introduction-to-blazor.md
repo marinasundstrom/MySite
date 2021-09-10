@@ -1,7 +1,7 @@
 ---
 title: "Introduction to Blazor"
 published: 2019-05-30
-tags: [blazor, dotnet, web, wasm]
+tags: [Blazor, .NET, Web, WebAssembly]
 ---
 
 This is an introductory article on Blazor.

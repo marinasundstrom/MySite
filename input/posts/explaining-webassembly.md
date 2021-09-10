@@ -1,7 +1,7 @@
 ---
 title: "Explaining WebAssembly"
 published: 2019-05-25
-tags: [webassembly, wasm, web]
+tags: [WebAssembly, Web]
 ---
 
 There has been a lot of talk about WebAssembly lately. But what is it really?

@@ -1,6 +1,7 @@
 Title: Docker and Kubernetes - An Introduction
 Published: 2021-09-01
 Image: /assets/container-ship.jpeg
+Tags: [Docker, Kubernetes, DevOps, Distributed applications]
 ---
 
 There are two pieces of software that everybody is talking about right now: Docker and Kubernetes.
@@ -15,7 +16,7 @@ If you restart the container, it will start up clean again. And when you are don
 
 ### How it works
 
-Docker is virtualization at Operating System level. It runs on top of an existing OS kernel - usually the Linux kernel. The kernel is the lowest level in an operating system which handles the computer's resources. So instead of being virtualized as a full virtual machine, by a software called a hypervisor, each Docker container shares the kernel resources of the host operating system. Each container has its own separate filesystem, and houses their own OS distribution. This allows Docker containers to be lightweight, as opposed to traditional virtual machines.
+Docker is virtualization at Operating System (OS) level. It runs on top of an existing OS kernel - usually the Linux kernel. The kernel is the lowest level of an operating system which handles the computer's resources. So instead of being virtualized as a full virtual machine, by a software called a *hypervisor*, each Docker container shares the kernel resources of the host operating system. Each container has its own separate filesystem, and houses their own OS distribution. This allows Docker containers to be lightweight, as opposed to traditional virtual machines.
 
 Linux is not itself an operating system, but a kernel that is being used by multiple Linux distributions - such as Ubuntu and CentOS, which are the actual operating systems, each containing their own set of programs and desktop environments.
 

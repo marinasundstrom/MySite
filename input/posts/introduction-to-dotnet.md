@@ -2,7 +2,7 @@
 title: "Introduction to .NET"
 published: 2021-04-25
 author: "Robert Sundström"
-tags: [dotnet, csharp]
+tags: [.NET, C#]
 ---
 
 .NET is an open-source platform for building applications for the Web, Mobile, Desktop, and Cloud. Currently, it is at version 5, which was released in November 2020.

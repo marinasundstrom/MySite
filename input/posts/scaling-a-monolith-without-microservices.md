@@ -1,5 +1,6 @@
 Title: Scaling a Monolith - without Microservices
 Published: 2021-09-06
+Tags: [Software engineering, Distributed applications]
 ---
 
 One myth is that you need to "do" microservices in order to scale your service applications horizontally. This has prompted a lot of people to rewrite their existing monoliths into microservices.
@@ -41,11 +42,15 @@ Picture the the application like this: Subscription sends a CreateInvoice comman
 
 ### Project boundaries
 
-If you have not already, you can split the parts of the application into separate projects, while still referencing them from the main project. That will create a boundary between, for instance, Provision and Subscriptions, which can not directly access each ones implementations.
+If you have not already, you can split the parts of the application (your services) into separate projects, while still referencing them from the main project. That will create a boundary between, for instance, Provision and Subscriptions, which can not directly access each ones implementations. 
+
+How would you access functionality across these project boundaries?
+
+You put all your service contracts, interfaces, Data Transfer Objects (DTOs), Commands, etc in another project. That project is in its turn referenced by the consuming service. The contracts can then be used when wiring up Dependency Injection or using a Message Bus.
 
 ### Database
 
-Another trait to microservices is that a service own its own data - meaning that only that service can directly insert into or update the database. In other words, the bounded context applies even here. In a monolith database it is totally possible to maintain boundaries using something like schemas. You can also enforce the boundaries at code level via a well defined Data Access layer.
+Another trait of microservices is that a service own its own data - meaning that only that service can directly insert into or update the database. In other words, the bounded context applies even here. In a monolith database it is totally possible to maintain boundaries using something like schemas. You can also enforce the boundaries at code level via a well defined Data Access layer.
 
 On top of this, you can scale the database itself using replication.
 
