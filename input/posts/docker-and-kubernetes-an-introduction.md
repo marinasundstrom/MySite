@@ -1,8 +1,11 @@
+---
 Title: Docker and Kubernetes - An Introduction
 Published: 2021-09-01
 Image: /assets/container-ship.jpeg
 Tags: [Docker, Kubernetes, DevOps, Distributed applications]
 ---
+
+*Updated on September 20th, 2021.*
 
 There are two pieces of software that everybody is talking about right now: Docker and Kubernetes.
 
@@ -20,6 +23,8 @@ Docker is virtualization at Operating System (OS) level. It runs on top of an ex
 
 Linux is not itself an operating system, but a kernel that is being used by multiple Linux distributions - such as Ubuntu and CentOS, which are the actual operating systems, each containing their own set of programs and desktop environments.
 
+Docker containers run in one or more separate virtual networks that you cannot access by default. In order for your host to access a server running in a container you have to explicitly tell Docker to map the internal port in the container with an external one on the host system.
+
 ### Composability
 
 Docker images are layered so you can build your own images with your software on top of existing base images. Use Nginx as a base, and then add the files for your site on top. You've got a new Docker image!
@@ -27,6 +32,8 @@ Docker images are layered so you can build your own images with your software on
 Now you can distribute the image, and others can easily run it without having to install any dependencies except Docker.
 
 The Nginx image is based on an image of the lightweight Alpine Linux distribution. So that is how Docker put software in composable layers.
+
+Using the Docker Compose (docker-compose) tool, you can orchestrate multiple containers. For instance, your web app running in one container, and a database server in another. The beauty is in that you describe your configuration in one file, and the Docker Compose tool essentially translates it into Docker commands. You simply tell Docker Compose to start everything.
 
 ### How it relates to Microservices
 
@@ -36,9 +43,9 @@ An application that is distributed across multiple separate applications or serv
 
 ## Kubernetes
 
-If you want to run containers in a Production environment, then you should consider using Kubernetes:
+If you want to run containers in a Production environment, then you should consider using Kubernetes.
 
-Kubernetes is a software that orchestrates containers and how they communicate with each other. It enables replication, load-balancing, and it can even restart services in case a container is down. It also provides capabilities for monitoring and controlling how you are exposing services to the outside world.
+Just like Docker Compose, Kubernetes is a software that orchestrates containers and how they communicate with each other, but it gives you production features. It enables running clusters on separate machines, replication and load balancing both within and across clusters, and it can even restart services in case a container is down. It also provides capabilities for monitoring and controlling how you are exposing services to the outside world.
 
 ## Conclusion
 

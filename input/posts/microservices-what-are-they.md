@@ -17,6 +17,7 @@ It used to be that developers built services that had a host of functionality, r
 
 Some characteristics for a microservice is that it is:
 
+* Autonomous - it is own independent service.
 * Independently deployable - without affecting other services.
 * Owns its own data - only the service can directly access and modify the data.
 * Scalable - scale horizontally with replicas of your services for redundancy when a service fails or is congested.
