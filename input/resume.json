@@ -7,7 +7,7 @@
             "location": "Malmo, Sweden",
             "current": true,
             "startDate": "2020-05-01",
-            "endDate": null,
+            "endDate": "2021-09-20",
             "description": "Developing a full CRM and e-Commerce solution from ground up in a customer-focused business - backend and frontend.",
             "skills": [
                 ".NET",
@@ -57,7 +57,7 @@
             "current": false,
             "startDate": "2019-01-01",
             "endDate": "2019-12-30",
-            "description": "Developing current Manufacturing Execution System (MES) for running plants in the area of Processing and Packaging.\n\nModular solution with backend service.\n\nBeing part of a fresh and diverse team. In close collaboration with other individuals and teams both on site and in other places around the world.\n\nInitiative to make refactoring in project structure in order to facilitate cross-team development.\n\nFor ESSIQ.",
+            "description": "Developing current Manufacturing Execution System (MES) for running customer production facilities in the area of Processing and Packaging.\n\nModular solution with backend service.\n\nBeing part of a fresh and diverse team. In close collaboration with other individuals and teams both on site and in other places around the world.\n\nInitiative to make refactoring in project structure in order to facilitate cross-team development.\n\nFor ESSIQ.",
             "skills": [
                 ".NET",
                 "C#",
