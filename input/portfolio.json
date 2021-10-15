@@ -28,6 +28,34 @@
             }
         },
         {
+            "name": "Accounting app",
+            "description": "Concept app for doing accounting with focus on user experience.\n\nHandles accounting using the BAS Accountint Plans.\nAlso provides a customized view for registering a sale.\n\nMore screenshots at project page.",
+            "image": "/assets/accounting.png",
+            "links": [
+                {
+                    "name": "Source Code",
+                    "type": "GitHub",
+                    "url": "https://github.com/robertsundstrom/accounting-app"
+                }
+            ],
+            "skills": {
+                "platforms": [
+                    ".NET 6",
+                    "Web"
+                ],
+                "programmingLanguages": [
+                    "C#"
+                ],
+                "frameworks": [
+                    "ASP.NET Core",
+                    "Blazor"
+                ],
+                "technologies": [
+                    "HTTP API"
+                ]
+            }
+        },
+        {
             "name": "Point of Sale",
             "description": "Checkout app with product catalog and receipts.\n\nThe user adds items from a catalog into a cart. Price gets calculated. When the items get checked out the user gets a receipt that can be printed, or downloaded as a PDF file.",
             "image": "/assets/pos.png",
